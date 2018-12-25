@@ -1,0 +1,106 @@
+\documentclass[10pt]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{picinpar,graphicx,bm}
+\usepackage{booktabs}
+\usepackage{diagbox}
+\usepackage{float}
+% used to demo bracket for array
+\usepackage{amsmath}
+
+\usepackage{listings}
+\usepackage{xcolor}
+% 定义可能使用到的颜色
+\definecolor{CPPLight}  {HTML} {686868}
+\definecolor{CPPSteel}  {HTML} {888888}
+\definecolor{CPPDark}   {HTML} {262626}
+\definecolor{CPPBlue}   {HTML} {4172A3}
+\definecolor{CPPGreen}  {HTML} {487818}
+\definecolor{CPPBrown}  {HTML} {A07040}
+\definecolor{CPPRed}    {HTML} {AD4D3A}
+\definecolor{CPPViolet} {HTML} {7040A0}
+\definecolor{CPPGray}  {HTML} {B8B8B8}
+\lstset{
+    columns=fixed,    
+   % numbers=left,                                        % 在左侧显示行号
+    frame=none,                                          % 不显示背景边框
+    backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+    keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+    numberstyle=\footnotesize\color{darkgray},           % 设定行号格式
+    commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+    stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+    showstringspaces=false,                              % 不显示字符串中的空格
+    language=c++,                                        % 设置语言
+    morekeywords={alignas,continute,friend,register,true,alignof,decltype,goto,
+    reinterpret_cast,try,asm,defult,if,return,typedef,auto,delete,inline,short,
+    typeid,bool,do,int,signed,typename,break,double,long,sizeof,union,case,
+    dynamic_cast,mutable,static,unsigned,catch,else,namespace,static_assert,using,
+    char,enum,new,static_cast,virtual,char16_t,char32_t,explict,noexcept,struct,
+    void,export,nullptr,switch,volatile,class,extern,operator,template,wchar_t,
+    const,false,private,this,while,constexpr,float,protected,thread_local,
+    const_cast,for,public,throw,std,size_t,__global__,__device__,__host__},
+    emph={map,set,multimap,multiset,unordered_map,unordered_set,
+    unordered_multiset,unordered_multimap,vector,string,list,deque,
+    array,stack,forwared_list,iostream,memory,shared_ptr,unique_ptr,
+    random,bitset,ostream,istream,cout,cin,endl,move,default_random_engine,
+    uniform_int_distribution,iterator,algorithm,functional,bing,numeric,},
+    emphstyle=\color{CPPViolet}, 
+    frame=shadowbox,
+    basicstyle=\footnotesize\ttfamily,
+    tabsize=4,
+}
+
+
+%layout
+\usepackage{calc} 
+\setlength\textwidth{7in} 
+\setlength\textheight{9in} 
+\setlength\oddsidemargin{(\paperwidth-\textwidth)/2 - 1in}
+\setlength\topmargin{(\paperheight-\textheight -\headheight-\headsep-\footskip)/2 - 1.5in}
+
+
+\title{应用几何造型 \hspace{2pt}\hspace{2pt} \begin{large}----- \hspace{2pt} B-spline曲面拟合 \end{large} }
+\author{11821095 葛林林}
+\begin{document}
+\maketitle
+
+
+\section{预备知识}
+\subsection{B-spline曲线的表示}
+\paragraph{B-spline基函数：}
+定义$B_{k,m}(t)$为B-spline基函数，$m-1$为该基函数的阶次，$k$代表第几个基函数，其具体表达式如下所示
+$$
+\left\{
+\begin{array}{rl}
+B_{k,m}(t)&=\frac{t-t_k}{t_{k+m-1}-t_k}B_{k,m-1}(t)+\frac{t_{k+m}-t}{t_{k+m}-t_{k+1}}B_{k+1,m-1}(t)\\
+B_{k,1}(t)&=
+\left\{
+\begin{array}{l}
+1 \hspace{10pt} t_k<t \leq t_{k+1} \\
+0 \hspace{10pt} other
+\end{array}
+\right.\\
+asume \hspace{5pt} \frac{0}{0}&=0
+\end{array}
+\right. 
+$$
+\paragraph{B-spline的定义：}在基函数的基础上，定义B-spline曲线方程如下所示
+$$P(t)=\sum_{k=0}^{M}P_kB_{k,m}(t)$$
+其中，$P_k$代表了控制顶点，总共有$M+1$个控制顶点。而$t$为节点，所有的节点组成了节点向量$\bm{T}=[t_0,t_1,t_2,\cdots]^T$。由于三次B-spline的一阶和二阶导数都是连续的，并且三次B-spline的阶次比较适中，因此三次B-spline在实际当中最常用。
+
+\subsection{B-spline曲面的表示}
+\paragraph{B-spline曲面的定义：}
+$$P(u,v)=\sum_{i=0}^{M}\sum_{j=0}^{N}P_{i,j}B_{i,m}(u)B_{j,n}(v)$$
+其中$B_{i,m}(u),B_{j,n}(v)$为B-spline基函数，$P_{i,j}$代表控制顶点。
+\subsection{曲面的拟合}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
