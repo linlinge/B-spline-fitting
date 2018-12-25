@@ -1,4 +1,5 @@
 #include "my_opengl.h"
+#include "main.h"
 
 int main(int argv, char** argc)
 {

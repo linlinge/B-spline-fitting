@@ -129,10 +129,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="b_spline.cpp" />
+    <ClCompile Include="data_load.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="my_opengl.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="b_spline.h" />
+    <ClInclude Include="data_load.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="my_opengl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

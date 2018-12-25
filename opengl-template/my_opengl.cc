@@ -5,8 +5,6 @@ using namespace glh;
 
 glut_simple_mouse_interactor object;
 
-Vector2D g_vector2D = { -0.2f,0.2f };
-
 
 void OpenglInit(int argc, char** argv)
 {
@@ -14,11 +12,11 @@ void OpenglInit(int argc, char** argv)
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH | GLUT_RGBA | GLUT_STENCIL);
 	glutInitWindowSize(800, 600);			//set window size
 	glutInitWindowPosition(100, 150);		//set window position
-	glutCreateWindow("Display");		//window name
-	glutDisplayFunc(DisplayFunc);//屏幕显示的回调函数
-	glutIdleFunc(IdleFunc);//闲置时回调函数（当没有消息时调用）
-	glutKeyboardFunc(KeyboardFunc);//数字、字母键的按键检测的回调函数
-	glutSpecialFunc(SpecialFunc);//特殊按键检测（F1~F12，控制键）
+	glutCreateWindow("Display");			//window name
+	glutDisplayFunc(DisplayFunc);			//屏幕显示的回调函数
+	glutIdleFunc(IdleFunc);					//闲置时回调函数（当没有消息时调用）
+	glutKeyboardFunc(KeyboardFunc);			//数字、字母键的按键检测的回调函数
+	glutSpecialFunc(SpecialFunc);			//特殊按键检测（F1~F12，控制键）
 	glutMouseFunc(MouseFunc);//鼠标检测
 	glutMotionFunc(MotionFunc);//鼠标按着拖动检测
 	glutPassiveMotionFunc(PassiveMotionFunc);//鼠标移动检测
@@ -35,23 +33,9 @@ void DisplayFunc()
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	glShadeModel(GL_SMOOTH);
 
-	glClearColor(0.6f, 0.6f, 0.6f , 0.1);	//can set the background
+	glClearColor(0.8f, 0.8f, 0.8f , 0);	//can set the background
 
 
-	float color = 0.0f;
-	glBegin(GL_POINTS);
-	for (float posY = -1.0f; posY <= 1.0f; posY += 0.001f)
-	{
-		color += 0.0005f;
-		//设置点颜色
-		glColor3f(pow(color,2), color, color); //设置点颜色
-		for (float posX = 1.0f; posX >= -1.0f; posX -= 0.001f)
-		{
-			//绘制点
-			glVertex2f(posX, posY);
-		}
-	}
-	glEnd();
 
 	glutSwapBuffers();	//swap buffer
 
