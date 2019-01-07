@@ -3,17 +3,24 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <Eigen\Dense>
+#include <algorithm>
 using namespace std;
+using namespace Eigen;
+
+#define TOSCREEN(DAT,MIN_VAL,MAX_VAL) (1.6*((DAT-MIN_VAL)/(MAX_VAL-MIN_VAL)-0.5))
+
 class Vec3f
 {
 public:
 	union {
 		struct {
-			float r, g, b;
-		};
-		struct {
 			float x, y, z;
 		};
+
+		struct {
+			float r, g, b;
+		};		
 	};
 	Vec3f() :r(0.0f), g(0.0f), b(0.0f) {};
 	Vec3f(float r1, float g1, float b1)
@@ -83,3 +90,4 @@ public:
 	}
 
 };
+

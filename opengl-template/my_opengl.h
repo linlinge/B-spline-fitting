@@ -3,6 +3,9 @@
 #include <gl/Gl.h>
 #include <gl/glu.h>
 #include <gl/glut.h>
+#include "main.h"
+
+using namespace std;
 
 extern void OpenglInit(int argc, char** argv);
 struct Vector2D
@@ -26,3 +29,6 @@ void MouseFunc(int button, int state, int x, int y);//鼠标检测
 void MotionFunc(int x, int y);//鼠标按着拖动
 
 void PassiveMotionFunc(int x, int y);//鼠标移动
+
+void Mesh(vector<vector<Vec3f>>& dat);
+void plot(vector<float>& x, vector<float>& y);
